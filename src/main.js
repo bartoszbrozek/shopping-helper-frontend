@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import vuetify from '@/plugins/vuetify'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
+import 'sweetalert2/dist/sweetalert2.min.css';
+import '@/assets/overrides.scss';
+import VueSweetalert2 from 'vue-sweetalert2';
 import VueRouter from "vue-router";
 import axios from "axios";
 import store from "./store";
@@ -13,6 +16,11 @@ import Register from '@/components/User/Register.vue'
 
 Vue.config.productionTip = false
 Vue.use(VueRouter);
+Vue.use(VueSweetalert2, {
+  position: "top-end",
+  showConfirmButton: false,
+  timer: 3000
+});
 
 axios.defaults.baseURL = "http://localhost:8000/";
 // axios.defaults.withCredentials = true;

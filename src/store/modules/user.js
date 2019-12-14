@@ -17,6 +17,19 @@ export default {
                         reject(error)
                     })
             })
-        }
+        },
+        REGISTER: ({ commit }, payload) => {
+            return new Promise((resolve, reject) => {
+                axios.post(`register`, payload)
+                    .then(({ data, status }) => {
+                        if (status >= 200 && status < 300) {
+                            resolve(true)
+                        }
+                    })
+                    .catch(error => {
+                        reject(error)
+                    })
+            })
+        },
     },
 }

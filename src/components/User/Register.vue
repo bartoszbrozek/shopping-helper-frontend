@@ -20,10 +20,17 @@
               </v-toolbar>
               <v-card-text>
                 <v-form>
-                  <v-text-field label="Email" name="email" prepend-icon="person" type="email" />
+                  <v-text-field
+                    v-model="username"
+                    label="Email"
+                    name="email"
+                    prepend-icon="person"
+                    type="email"
+                  />
 
                   <v-text-field
                     id="password"
+                    v-model="password"
                     label="Password"
                     name="password"
                     prepend-icon="lock"
@@ -33,7 +40,7 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer />
-                <v-btn color="primary">Register</v-btn>
+                <v-btn color="primary" @click="register">Register</v-btn>
               </v-card-actions>
             </v-card>
           </v-col>
@@ -44,5 +51,35 @@
 </template>
 
 <script>
-export default {};
+/* eslint-disable no-unused-vars */
+export default {
+  data: () => ({
+    username: "",
+    password: ""
+  }),
+  methods: {
+    register() {
+      this.$store
+        .dispatch("REGISTER", {
+          username: this.username,
+          password: this.password
+        })
+        .then(success => {
+          this.$router.push("/login");
+          this.$swal({
+            title: "Success",
+            html: success.message,
+            type: "success"
+          });
+        })
+        .catch(error => {
+          this.$swal({
+            title: "Error",
+            html: error.message,
+            type: "error"
+          });
+        });
+    }
+  }
+};
 </script>
