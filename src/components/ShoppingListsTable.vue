@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-data-table :headers="headers" :items="shoppingLists" :items-per-page="5" class="elevation-1"></v-data-table>
+    <v-data-table :headers="headers" :items="shoppingLists" :items-per-page="20" class="elevation-1"></v-data-table>
   </div>
 </template>
 

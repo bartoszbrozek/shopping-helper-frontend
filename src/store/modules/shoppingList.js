@@ -22,5 +22,18 @@ export default {
 
             commit("setShoppingLists", data)
         },
+        ADD_SHOPPING_LIST: (({ commit }, payload) => {
+            return new Promise((resolve, reject) => {
+                axios.post(`shoppings`, payload)
+                    .then(({ data, status }) => {
+                        if (status >= 200 && status < 300) {
+                            resolve(true)
+                        }
+                    })
+                    .catch(error => {
+                        reject(error)
+                    })
+            })
+        })
     },
 }
