@@ -43,7 +43,6 @@
                 <v-btn color="primary" @click="login">Login</v-btn>
               </v-card-actions>
             </v-card>
-            <v-alert color="error" :value="error" style="color: white">Email or password are not correct</v-alert>
           </v-col>
         </v-row>
       </v-container>
@@ -57,7 +56,6 @@ export default {
   data: () => ({
     username: "",
     password: "",
-    error: false
   }),
   methods: {
     login() {
@@ -67,11 +65,11 @@ export default {
           password: this.password
         })
         .then(success => {
-          this.error = false;
           this.$router.push("/");
+            this.$store.commit("showSnack", { color: "orange darken-2", text: "Logged In" })
         })
         .catch(error => {
-          this.error = true;
+            this.$store.commit("showSnack", { color: "pink", text: "Invalid Login" })
         });
     }
   }
