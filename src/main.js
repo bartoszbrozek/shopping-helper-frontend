@@ -10,7 +10,10 @@ import store from "./store";
 
 // Components
 import App from './App.vue'
+import Container from '@/components/Container.vue'
 import Dashboard from '@/components/Dashboard.vue'
+import Products from '@/components/Products.vue'
+import ShoppingLists from '@/components/ShoppingLists.vue'
 import Login from '@/components/User/Login.vue'
 import Register from '@/components/User/Register.vue'
 
@@ -33,7 +36,21 @@ axios.interceptors.request.use(function (config) {
 const routes = [
   {
     path: "/",
-    component: Dashboard
+    component: Container,
+    children: [
+      {
+        path: '',
+        component: Dashboard
+      },
+      {
+        path: 'products',
+        component: Products
+      },
+      {
+        path: 'shoppinglists',
+        component: ShoppingLists
+      },
+    ]
   },
   {
     path: "/login",

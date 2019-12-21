@@ -1,10 +1,10 @@
 <template>
-  <div>Dashboard</div>
+  <div>Shopping Lists</div>
 </template>
 
 <script>
 export default {
-  name: "Dashboard",
+  name: "Products",
   data: () => ({
     drawer: null
   })
