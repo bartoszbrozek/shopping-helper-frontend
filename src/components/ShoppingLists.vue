@@ -1,10 +1,14 @@
 <template>
-  <div>Shopping Lists</div>
+  <div>
+    <ShoppingListsTable></ShoppingListsTable>
+  </div>
 </template>
 
 <script>
+import ShoppingListsTable from "./ShoppingListsTable";
 export default {
-  name: "Products",
+  name: "ShoppingLists",
+  components: { ShoppingListsTable },
   data: () => ({
     drawer: null
   })
