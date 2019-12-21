@@ -22,8 +22,12 @@ Vue.use(VueSweetalert2, {
   timer: 3000
 });
 
-axios.defaults.baseURL = "http://localhost:8000/";
-// axios.defaults.withCredentials = true;
+axios.defaults.baseURL = "http://localhost/";
+axios.defaults.withCredentials = true;
+
+axios.interceptors.request.use(function (config) {
+  return config;
+});
 
 // Router
 const routes = [
