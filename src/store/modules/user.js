@@ -4,6 +4,7 @@ import store from '..'
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 export default {
+    namespaced: true,
     state: {
         userData: null
     },
@@ -33,11 +34,26 @@ export default {
 
             loginPromise.then(() => {
                 // Set user in store
-                store.dispatch("SET_DATA")
+                store.dispatch("user/SET_DATA")
             })
 
             return loginPromise;
         },
+        // LOGOUT: ({ commit }, payload) => {
+        //     const loginPromise = new Promise((resolve, reject) => {
+        //         axios.post(`logout`, payload)
+        //             .then(({ data, status }) => {
+        //                 if (status === 200) {
+        //                     resolve(true)
+        //                 }
+        //             })
+        //             .catch(error => {
+        //                 reject(error)
+        //             })
+        //     })
+
+        //     return loginPromise;
+        // },
         REGISTER: ({ commit }, payload) => {
             return new Promise((resolve, reject) => {
                 axios.post(`register`, payload)
@@ -58,7 +74,7 @@ export default {
                         if (status === 200) {
                             resolve(true)
 
-                            store.commit("setUserData", data)
+                            store.commit("user/setUserData", data)
                         }
                     })
                     .catch(error => {

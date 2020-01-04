@@ -60,7 +60,7 @@ export default {
   methods: {
     login() {
       this.$store
-        .dispatch("LOGIN", {
+        .dispatch("user/LOGIN", {
           username: this.username,
           password: this.password
         })

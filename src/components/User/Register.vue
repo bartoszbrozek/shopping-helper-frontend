@@ -60,7 +60,7 @@ export default {
   methods: {
     register() {
       this.$store
-        .dispatch("REGISTER", {
+        .dispatch("user/REGISTER", {
           username: this.username,
           password: this.password
         })

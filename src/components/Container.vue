@@ -2,6 +2,15 @@
   <v-app id="inspire">
     <v-navigation-drawer v-model="drawer" app>
       <v-list dense>
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title class="title">Shopping Helper</v-list-item-title>
+            <v-list-item-subtitle>Welcome, <span v-html="user.email"></span>!</v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-divider></v-divider>
+
         <v-list-item link to="/">
           <v-list-item-action>
             <v-icon>mdi-home</v-icon>
@@ -24,6 +33,15 @@
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>Shopping Lists</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item link @click="logout">
+          <v-list-item-action>
+            <v-icon>mdi-logout</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Logout</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -50,6 +68,18 @@ export default {
   name: "Container",
   data: () => ({
     drawer: null
-  })
+  }),
+  computed: {
+    user: {
+      get() {
+        return this.$store.state.user.userData
+      }
+    }
+  },
+  methods: {
+    logout: function() {
+      this.$router.push("/login")
+    }
+  }
 };
 </script>

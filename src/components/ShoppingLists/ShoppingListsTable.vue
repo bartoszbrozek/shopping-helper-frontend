@@ -3,7 +3,7 @@
     <v-data-table
       :headers="headers"
       :items="shoppingLists"
-      :items-per-page="20"
+      :items-per-page="15"
       class="elevation-1"
     >
       <template v-slot:item.action="{ item }">
