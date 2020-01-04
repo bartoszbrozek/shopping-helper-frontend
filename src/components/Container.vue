@@ -5,7 +5,10 @@
         <v-list-item>
           <v-list-item-content>
             <v-list-item-title class="title">Shopping Helper</v-list-item-title>
-            <v-list-item-subtitle>Welcome, <span v-html="user.email"></span>!</v-list-item-subtitle>
+            <v-list-item-subtitle>
+              Welcome,
+              <span v-html="user.email"></span>!
+            </v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
 
@@ -69,16 +72,19 @@ export default {
   data: () => ({
     drawer: null
   }),
+  created: function() {
+    this.$store.dispatch("user/GET_DATA");
+  },
   computed: {
     user: {
       get() {
-        return this.$store.state.user.userData
+        return this.$store.state.user.userData;
       }
     }
   },
   methods: {
     logout: function() {
-      this.$router.push("/login")
+      this.$router.push("/login");
     }
   }
 };

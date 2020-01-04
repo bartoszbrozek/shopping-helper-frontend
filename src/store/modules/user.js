@@ -39,21 +39,23 @@ export default {
 
             return loginPromise;
         },
-        // LOGOUT: ({ commit }, payload) => {
-        //     const loginPromise = new Promise((resolve, reject) => {
-        //         axios.post(`logout`, payload)
-        //             .then(({ data, status }) => {
-        //                 if (status === 200) {
-        //                     resolve(true)
-        //                 }
-        //             })
-        //             .catch(error => {
-        //                 reject(error)
-        //             })
-        //     })
+        GET_DATA: ({ commit }, payload) => {
+            const loginPromise = new Promise((resolve, reject) => {
+                axios.get(`user`, payload)
+                    .then(({ data, status }) => {
+                        if (status === 200) {
+                            resolve(true)
 
-        //     return loginPromise;
-        // },
+                            store.commit("user/setUserData", data)
+                        }
+                    })
+                    .catch(error => {
+                        reject(error)
+                    })
+            })
+
+            return loginPromise;
+        },
         REGISTER: ({ commit }, payload) => {
             return new Promise((resolve, reject) => {
                 axios.post(`register`, payload)
