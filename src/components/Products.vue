@@ -1,12 +1,9 @@
 <template>
-  <div>Products</div>
+  <v-layout child-flex>Products</v-layout>
 </template>
 
 <script>
 export default {
-  name: "Products",
-  data: () => ({
-    drawer: null
-  })
+  name: "Products"
 };
 </script>

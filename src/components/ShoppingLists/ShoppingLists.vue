@@ -1,18 +1,17 @@
 <template>
-  <div>
+  <v-layout child-flex>
     <ShoppingListsTable></ShoppingListsTable>
     <AddShoppingList></AddShoppingList>
-  </div>
+    <EditShoppingList></EditShoppingList>
+  </v-layout>
 </template>
 
 <script>
 import ShoppingListsTable from "./ShoppingListsTable";
 import AddShoppingList from "./Dialogs/AddShoppingList";
+import EditShoppingList from "./Dialogs/EditShoppingList";
 export default {
   name: "ShoppingLists",
-  components: { ShoppingListsTable, AddShoppingList },
-  data: () => ({
-    drawer: null
-  })
+  components: { ShoppingListsTable, AddShoppingList, EditShoppingList }
 };
 </script>

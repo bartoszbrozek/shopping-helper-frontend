@@ -34,6 +34,36 @@ export default {
                         reject(error)
                     })
             })
+        }),
+        EDIT_SHOPPING_LIST: (({ commit }, payload) => {
+            return new Promise((resolve, reject) => {
+                const id = payload.id
+
+                axios.patch(`shoppings/${id}`, payload)
+                    .then(({ data, status }) => {
+                        if (status >= 200 && status < 300) {
+                            resolve(true)
+                        }
+                    })
+                    .catch(error => {
+                        reject(error)
+                    })
+            })
+        }),
+        DELETE_SHOPPING_LIST: (({ commit }, payload) => {
+            return new Promise((resolve, reject) => {
+                const id = payload.id
+
+                axios.delete(`shoppings/${id}`, payload)
+                    .then(({ data, status }) => {
+                        if (status >= 200 && status < 300) {
+                            resolve(true)
+                        }
+                    })
+                    .catch(error => {
+                        reject(error)
+                    })
+            })
         })
     },
 }

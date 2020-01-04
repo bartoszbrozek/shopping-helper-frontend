@@ -11,8 +11,10 @@ import App from './App.vue'
 import Container from '@/components/Container.vue'
 import Dashboard from '@/components/Dashboard.vue'
 import Products from '@/components/Products.vue'
-import ShoppingLists from '@/components/ShoppingLists.vue'
+import ShoppingLists from '@/components/ShoppingLists/ShoppingLists.vue'
+import ShoppingListsEdit from '@/components/ShoppingLists/ShoppingListsEdit.vue'
 import Login from '@/components/User/Login.vue'
+import Logout from '@/components/User/Logout.vue'
 import Register from '@/components/User/Register.vue'
 
 Vue.config.productionTip = false
@@ -43,11 +45,19 @@ const routes = [
         path: 'shoppinglists',
         component: ShoppingLists
       },
+      {
+        path: 'shoppinglists/edit',
+        component: ShoppingListsEdit
+      },
     ]
   },
   {
     path: "/login",
     component: Login
+  },
+  {
+    path: "/logout",
+    component: Logout
   },
   {
     path: "/register",

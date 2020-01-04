@@ -10,7 +10,7 @@
         </template>
         <v-card>
           <v-card-title>
-            <span class="headline">Add Shopping List</span>
+            <span class="headline">Delete Shopping List</span>
           </v-card-title>
           <v-card-text>
             <v-container>
@@ -24,7 +24,7 @@
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn color="blue darken-1" text @click="dialog = false">Close</v-btn>
-            <v-btn color="blue darken-1" text @click="addShoppingList">Save</v-btn>
+            <v-btn color="red darken-1" text @click="deleteShoppingList">Delete</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -34,20 +34,21 @@
 
 <script>
 export default {
+  name: "deleteShoppingListDialog",
   data: () => ({
     dialog: false,
     name: ""
   }),
   methods: {
-    addShoppingList() {
+    deleteShoppingList() {
       const payload = {
         name: this.name
       };
-      this.$store.dispatch("ADD_SHOPPING_LIST", payload).then(() => {
+      this.$store.dispatch("DELETE_SHOPPING_LIST", payload).then(() => {
         this.$store.dispatch("GET_SHOPPING_LISTS", payload);
         this.$store.commit("showSnack", {
           color: "orange darken-2",
-          text: "Shopping List Added"
+          text: "Shopping List Deleted"
         });
 
         this.dialog = false;
